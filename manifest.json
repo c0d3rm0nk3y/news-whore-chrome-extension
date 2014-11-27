@@ -14,7 +14,7 @@
     "persistent" : true,
     "scripts" : ["background.js"]
   },
-  "permissions": [ "identity", "https://accounts.google.com/*", "https://www.googleapis.com/*", "tabs", "<all_urls>"],
+  "permissions": [ "identity", "http://localhost:8080/*", "https://accounts.google.com/*", "https://www.googleapis.com/*", "tabs", "<all_urls>"],
   "oauth2": {
     "client_id": "116823597102-i98nlbqvrv25fj9odj7la2m3nlkeuk2v.apps.googleusercontent.com",
     "scopes" : ["https://www.googleapis.com/auth/plus.login"]

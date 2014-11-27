@@ -20,15 +20,15 @@ var googlePlusUserLoader = (function() {
     switch(state) {
       case START_STATE:
         console.log('START_STATE');
-        enableButton(btnSignin);
+        //enableButton(btnSignin);
         break;
       case STATE_ACQUIRING_AUTHTOKEN:
         console.log('acquiring token..');
-        disableButton(btnSignin);
+        //disableButton(btnSignin);
         break;
       case STATE_AUTHTOKEN_ACQUIRED:
         console.log('STATE_AUTHTOKEN_ACQUIRED');
-        disableButton(btnSignin);
+        //disableButton(btnSignin);
         break;
     }
   }
@@ -59,7 +59,7 @@ var googlePlusUserLoader = (function() {
       var tabLink = tab.url;
 
       var postdata = "link="+tab.url+"&token=" + theToken;
-      var link = 'http://monkey-nodejs-71725.usw1.nitrousbox.com:8080/submitArticle?'+postdata;
+      var link = 'http://localhost:8080/submitArticle?'+postdata;
 
       // * ponder this.. have it get a token each time ?...
       // * doens't look like the trap is working... need to include it in the code
@@ -72,6 +72,7 @@ var googlePlusUserLoader = (function() {
       var req = new XMLHttpRequest();
       // post isn't working.. should try get..  include components in url..
       req.open("GET", link, true);
+
       req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       req.responseType = 'blob';
 
@@ -84,6 +85,7 @@ var googlePlusUserLoader = (function() {
           reader.addEventListener("loadend", function() {
              // reader.result contains the contents of blob as a typed array
              console.log(reader.result);
+
           });
 
           reader.readAsText(req.response);
@@ -97,9 +99,6 @@ var googlePlusUserLoader = (function() {
 
   return {
     onload: function() {
-      btnSignin = document.querySelector('#login');
-      btnSignin.addEventListener('click', iSignIn);
-
       btnSend = document.querySelector('#submit');
       btnSend.addEventListener('click', iSignIn);
     }
